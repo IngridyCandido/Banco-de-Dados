@@ -127,3 +127,37 @@ create table categoria (
 	nome text,
 	ultima_atualizacao date 
 );
+
+alter table filme add check (taxa_aluguel<=0);
+
+alter table filme add check (custo_reposicao<=0);
+
+alter table filme add check (taxa<=0);
+
+alter table filme alter column titulo set not null;
+
+alter table filme alter column ano_lancamento set not null;
+
+alter table filme alter column taxa_aluguel set not null;
+
+alter table filme alter column tamanho set not null;
+
+alter table filme alter column custo_reposicao set not null;
+
+alter table filme alter column idioma_id set not null;
+
+alter table filme alter column taxa set not null;
+
+alter table idioma alter column nome set not null;
+
+alter table ator alter column nome set not null;
+
+alter table ator alter column sobrenome set not null;
+
+alter table categoria alter column nome set not null;
+
+alter table aluguel alter column data_aluguel set not null;
+
+alter table aluguel alter column data_retorno set not null;
+
+alter table aluguel alter foreign key set not null;
