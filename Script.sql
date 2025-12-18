@@ -36,11 +36,34 @@ create table Pedido (
 	qtd integer
 );
 
-insert into produto (produto_num,nome,preco)
-values(2,'água',1);
+insert into produto (produto_num, nome, preco, descricao)
+values(2,'água',1, 'sem gás');
 select*from produto
 
 insert into pedido (pedido_num, produto_num, qtd) 
 values (10,2,2);
 select*from pedido
 
+alter table Produto add column descricao text check (descricao <>'');
+
+alter table Produto drop column descricao;
+
+alter table Produto add check (nome<>'');
+
+alter table Produto add constraint nome_restricao unique (produto_num);
+
+alter table Produto add foreign key (produto_grupo_id) references produto_grupo (grupoid);
+
+alter table Produto alter column produto_num set not null;
+
+alter table Produto drop constraint nome_restricao;
+
+alter table Produto alter column produto_num drop not null;
+
+alter table Produto alter column preco set default 7.77;
+
+alter table Produto alter column preco drop default 7.77;
+
+alter table Produto alter column preco type numeric;
+
+alter table Produto rename to itens;
